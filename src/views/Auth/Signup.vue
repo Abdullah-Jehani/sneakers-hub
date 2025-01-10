@@ -10,7 +10,7 @@
           <input
             type="text"
             id="name"
-            v-model="name"
+            v-model="authStore.name"
             required
             class="mt-1 block w-full px-4 py-2 border rounded-md text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
           />
@@ -22,7 +22,7 @@
           <input
             type="email"
             id="email"
-            v-model="email"
+            v-model="authStore.email"
             required
             class="mt-1 block w-full px-4 py-2 border rounded-md text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
           />
@@ -34,7 +34,7 @@
           <input
             type="password"
             id="password"
-            v-model="password"
+            v-model="authStore.password"
             required
             class="mt-1 block w-full px-4 py-2 border rounded-md text-gray-700 focus:ring focus:ring-blue-300 focus:outline-none"
           />
@@ -57,14 +57,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/counter";
 
-const name = ref('');
-const email = ref('');
-const password = ref('');
+const authStore = useAuthStore();
+
+const name = ref("");
+const email = ref("");
+const password = ref("");
 
 const handleSignup = () => {
-  console.log('Signing up with', {
+  console.log("Signing up with", {
     name: name.value,
     email: email.value,
     password: password.value,
